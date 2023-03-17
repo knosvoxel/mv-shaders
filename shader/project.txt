@@ -1,0 +1,40 @@
+// MIT License (MIT)
+// Copyright (c) 2023 Niklas Mäckle
+//
+// xs_begin
+// author : '@knosvoxel'
+// arg : { name = 'Mode' var = 'm_mode' range = '1 2' value = '1' step = '1' precision = '1'}
+// xs_end
+
+float mode = m_mode;
+float x,y,z;
+
+float map(vec3 v){
+    float index = voxel(v);
+    x = v.x;
+    y = v.y;
+    z = v.z;
+
+    if (index == 0.0){
+        return index;
+    }
+
+    float index_above;
+    if(mode == 1)
+    {
+        float index_above = voxel(vec3(x,y,z+1));
+        if (index_above == 0.0){
+            return iColorIndex;
+        }
+
+        return index;
+    }
+    
+    for(int i = v.z+1; i < iVolumeSize.z; i++){
+        if(voxel(vec3(x,y,i)) != 0.0){
+            return index;
+        }
+    }
+
+    return iColorIndex;
+}

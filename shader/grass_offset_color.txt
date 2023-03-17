@@ -1,0 +1,207 @@
+// MIT License (MIT)
+// Copyright (c) 2023 Niklas Mäckle
+//
+// xs_begin
+// author : '@knosvoxel'
+// arg : { name = 'Mode' var = 'm_mode' range = '1 8' value = '1' step = '1' precision = '1'}
+// arg : { name = 'Threshold' var = 'm_threshold' range = '0 1' value = '0.5' step = '0.01' precision = '0' decimal = '3' }
+// arg : { name = 'Color' var = 'm_color' range = '1 255' value = '1' step = '1' precision = '0' }
+// arg : { name = 'Color Threshold' var = 'm_cthreshold' range = '0 1' value = '0' step = '0.01' precision = '0' decimal = '3' }
+// arg : { name = 'Seed' var = 'm_seed' range = '0 1000000' value = '42' step = '1' precision = '0' }
+// xs_end
+
+float x,y,z;
+float seed = m_seed;
+float threshold = m_threshold;
+float cthreshold = m_cthreshold;
+
+float color = m_color;
+int mode = int(m_mode);
+
+float PHI = 1.61803398874989484820459;
+
+
+float random(vec2 xy)
+{
+    return fract(tan(distance(xy*PHI, xy)*seed)*xy.x);
+}
+
+
+bool checkDir1(vec3 v)
+{
+    float index = voxel(vec3(v.x-1,v.y,v.z-1));
+    float index_flat = voxel(vec3(v.x-1,v.y,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir2(vec3 v)
+{
+    float index = voxel(vec3(v.x-1,v.y-1,v.z-1));
+    float index_flat = voxel(vec3(v.x-1,v.y-1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir3(vec3 v)
+{
+    float index = voxel(vec3(v.x,v.y-1,v.z-1));
+    float index_flat = voxel(vec3(v.x,v.y-1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir4(vec3 v)
+{
+    float index = voxel(vec3(v.x+1,v.y-1,v.z-1));
+    float index_flat = voxel(vec3(v.x+1,v.y-1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir5(vec3 v)
+{
+    float index = voxel(vec3(v.x+1,v.y,v.z-1));
+    float index_flat = voxel(vec3(v.x+1,v.y,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir6(vec3 v)
+{
+    float index = voxel(vec3(v.x+1,v.y+1,v.z-1));
+    float index_flat = voxel(vec3(v.x+1,v.y+1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir7(vec3 v)
+{
+    float index = voxel(vec3(v.x,v.y+1,v.z-1));
+    float index_flat = voxel(vec3(v.x,v.y+1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+bool checkDir8(vec3 v)
+{
+    float index = voxel(vec3(v.x-1,v.y+1,v.z-1));
+    float index_flat = voxel(vec3(v.x-1,v.y+1,v.z));
+
+    if(index == iColorIndex && index_flat == 0.0){
+        return true;
+    }
+
+    return false;
+}
+
+float map(vec3 v){
+    float index = voxel(v);
+    x = v.x;
+    y = v.y;
+    z = v.z;
+
+    if (index == 0.0){
+        float index_above = voxel(vec3(x,y,z+1));
+        
+        if (index_above == 0.0){
+            if(mode == 1 && checkDir1(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }
+            }
+            else if(mode == 2 && checkDir2(v)){
+                if(random(vec2(x,y)) >= threshold){  
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }            
+            }
+            else if(mode == 3 && checkDir3(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }            
+            }
+            else if(mode == 4 && checkDir4(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }          
+            }
+            else if(mode == 5 && checkDir5(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }          
+            }
+            else if(mode == 6 && checkDir6(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }          
+            }
+            else if(mode == 7 && checkDir7(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }          
+            }
+            else if(mode == 8 && checkDir8(v)){
+                if(random(vec2(x,y)) >= threshold){
+                    if(random(vec2(x,y)) >= cthreshold){
+                        return color;
+                    }
+                    return iColorIndex;
+                }          
+            }
+            return index;
+        }
+
+        return index;
+    }
+
+    return index;
+}
