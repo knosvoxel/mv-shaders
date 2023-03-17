@@ -5,17 +5,12 @@
 // author : '@knosvoxel'
 // arg : { name = 'Mode' var = 'm_mode' range = '1 8' value = '1' step = '1' precision = '1'}
 // arg : { name = 'Threshold' var = 'm_threshold' range = '0 1' value = '0.5' step = '0.01' precision = '0' decimal = '3' }
-// arg : { name = 'Color' var = 'm_color' range = '1 255' value = '1' step = '1' precision = '0' }
-// arg : { name = 'Color Threshold' var = 'm_cthreshold' range = '0 1' value = '0' step = '0.01' precision = '0' decimal = '3' }
 // arg : { name = 'Seed' var = 'm_seed' range = '0 1000000' value = '42' step = '1' precision = '0' }
 // xs_end
 
 float x,y,z;
 float seed = m_seed;
 float threshold = m_threshold;
-float cthreshold = m_cthreshold;
-
-float color = m_color;
 int mode = int(m_mode);
 
 float PHI = 1.61803398874989484820459;
@@ -54,14 +49,11 @@ float map(vec3 v){
 
     if (index == 0.0){
         float index_above = voxel(vec3(x,y,z+1));
-        
+        float index_below = voxel(vec3(x,y,z+1));
+
         if (index_above == 0.0){
             if(checkDir(v, modes[mode - 1])){
                 if(random(vec2(x,y)) >= threshold){
-                    if(random(vec2(x,y)) >= cthreshold){
-                        return color;
-                    }
-                    
                     return iColorIndex;
                 }
             }
