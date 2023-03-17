@@ -17,14 +17,14 @@ The grass shader currently comes in 4 different variations:
 - **grass_offset**: After making basic grass blades with the `grass` shader you can use this shader to add some bend to them. Based on the color you select in the palette you can decide which index is affected. Voxels are placed on top and offset by 1 in the direction you determine by adjusting the `Mode`. There are 8 different modes for all basic directions.
 - **grass_offset_color**: Similar to the `grass_color` shader this shader gives you more control over the color of voxels that are placed. It also comes with a similar threshold level to adjust the blend between the 2 colors that are used.
 
-### Project
+### Snow
 
-The project shader currently comes in 2 different variations:
+The snow shader currently comes in 2 different variations:
 
-- **project**: This shader has two `modes`:
+- **snow**: This shader has two `modes`:
   - Mode 1: Voxels that don't have a voxel on layer above them are replaced with the color you have selected in the palette
   - Mode 2: Only voxels that don't have a voxel above them at all are replaced.
-- **project_add**: This shader also has two `modes`with similar differences as the `project` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
+- **snow_add**: This shader also has two `modes`with similar differences as the `project` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
 
 ## Feedback & Ideas
 
