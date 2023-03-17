@@ -3,7 +3,7 @@
 //
 // xs_begin
 // author : '@knosvoxel'
-// arg : { name = 'Mode' var = 'm_mode' range = '1 2' value = '1' step = '1' precision = '1'}
+// arg : { name = 'Mode' var = 'm_mode' range = '1 2' value = '1' step = '1' precision = '0'}
 // xs_end
 
 float mode = m_mode;

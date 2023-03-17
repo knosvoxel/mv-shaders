@@ -3,9 +3,9 @@
 //
 // xs_begin
 // author : '@knosvoxel'
-// arg : { name = 'Threshold' var = 'm_threshold' range = '0 1' value = '0.5' step = '0.01' precision = '0' decimal = '3' }
+// arg : { name = 'Threshold' var = 'm_threshold' range = '0 1' value = '0.5' step = '0.01' precision = '2' decimal = '2' }
 // arg : { name = 'Color' var = 'm_color' range = '1 255' value = '1' step = '1' precision = '0' }
-// arg : { name = 'Color Threshold' var = 'm_cthreshold' range = '0 1' value = '0' step = '0.01' precision = '0' decimal = '3' }
+// arg : { name = 'Color Threshold' var = 'm_cthreshold' range = '0 1' value = '0' step = '0.01' precision = '2' decimal = '2' }
 // arg : { name = 'Seed' var = 'm_seed' range = '0 1000000' value = '42' step = '1' precision = '0' }
 // xs_end
 
