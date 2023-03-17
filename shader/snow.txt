@@ -1,0 +1,60 @@
+// MIT License (MIT)
+// Copyright (c) 2023 Niklas Mäckle
+//
+// xs_begin
+// author : '@knosvoxel'
+// arg : { name = 'Mode' var = 'm_mode' range = '1 2' value = '1' step = '1' precision = '0'}
+// arg : { name = 'Threshold' var = 'm_threshold' range = '0 1' value = '0.0' step = '0.01' precision = '2' decimal = '2' }
+// arg : { name = 'Seed' var = 'm_seed' range = '0 1000000' value = '42' step = '1' precision = '0' }
+// xs_end
+
+float mode = m_mode;
+float threshold = m_threshold;
+float seed = m_seed;
+
+float x,y,z;
+
+float PHI = 1.61803398874989484820459;
+
+float random(vec2 xy)
+{
+    return fract(tan(distance(xy*PHI, xy)*seed)*xy.x);
+}
+
+float map(vec3 v){
+    float index = voxel(v);
+    x = v.x;
+    y = v.y;
+    z = v.z;
+
+    if (index == 0.0){
+        return index;
+    }
+
+    float index_above;
+    if(mode == 1)
+    {
+        index_above = voxel(vec3(x,y,z+1));
+        if (index_above == 0.0){
+            if(random(vec2(x,y)) >= threshold){
+                return iColorIndex;
+            }
+
+            return index;
+        }
+
+        return index;
+    }
+    
+    for(int i = v.z+1; i < iVolumeSize.z; i++){
+        if(voxel(vec3(x,y,i)) != 0.0){
+            return index;
+        }
+    }
+
+    if(random(vec2(x,y)) >= threshold){
+        return iColorIndex;
+    }
+
+    return index;
+}
