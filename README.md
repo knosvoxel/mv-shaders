@@ -24,7 +24,7 @@ The snow shader currently comes in 2 different variations:
 - **snow**: This shader has two `modes`:
   - Mode 1: Voxels that don't have a voxel on layer above them are replaced with the color you have selected in the palette
   - Mode 2: Only voxels that don't have a voxel above them at all are replaced.
-- **snow_add**: This shader also has two `modes`with similar differences as the `project` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
+- **snow_add**: This shader also has two `modes`with similar differences as the `snow` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
 
 ## Feedback & Ideas
 
