@@ -26,11 +26,11 @@ The project shader currently comes in 2 different variations:
   - Mode 2: Only voxels that don't have a voxel above them at all are replaced.
 - **project_add**: This shader also has two `modes`with similar differences as the `project` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
 
-# Feedback & Ideas
+## Feedback & Ideas
 
 If there is any feedback you have or ideas for new shaders head over to the Issues tab and and [create a new issue][new-issue] if one doesn't exist already for the same thing or send me a message on Discord `knosvoxel#4773`
 
-# License
+## License
 
 This repository is licenced under the [MIT license][license-link].
 
