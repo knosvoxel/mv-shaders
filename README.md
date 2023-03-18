@@ -26,6 +26,12 @@ The snow shader currently comes in 2 different variations:
   - Mode 2: Only voxels that don't have a voxel above them at all are replaced.
 - **snow_add**: This shader also has two `modes`with similar differences as the `snow` shader. The only difference is that in this case voxels aren't replaced but voxels are added one layer above those voxels already present with the color you have selected in your palette.
 
+### Sand
+
+The sand shader currently only has one variation:
+
+- **sand_brush**: This shader takes voxels with the selected color index's color and makes them "fall down" one voxel with each usage of the shader
+
 ## Feedback & Ideas
 
 If there is any feedback you have or ideas for new shaders head over to the Issues tab and and [create a new issue][new-issue] if one doesn't exist already for the same thing or send me a message on Discord `knosvoxel#4773`
