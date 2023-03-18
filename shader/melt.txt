@@ -1,0 +1,51 @@
+// MIT License (MIT)
+// Copyright (c) 2023 Niklas Mäckle
+//
+// xs_begin
+// author : '@knosvoxel'
+// xs_end
+
+float x,y,z;
+int max;
+
+float searchAbove(vec3 index)
+{
+    for(int i = index.z; i < 256; i++)
+    {
+        float currentIndex = voxel(vec3(index.x, index.y, i));
+        if(currentIndex != 0.0){
+            return currentIndex;
+        }
+    }
+
+    return 0.0f;
+}
+
+float map(vec3 v){
+
+    float index = voxel(v);
+   
+    x = v.x;
+    y = v.y;
+    z = v.z;
+
+    float index_above = voxel(vec3(x,y,z+1));
+    float index_below = voxel(vec3(x,y,z-1));
+
+    if (index == 0.0){
+
+        float colorIndex = searchAbove(v);
+
+        if (colorIndex != 0.0 && index_below != 0.0 || colorIndex != 0.0 && z < 1.0){
+            return colorIndex;
+        }
+
+        return index;
+    }
+
+    if (index_below == 0.0 && z > 1.0){
+        return 0.0;
+    }
+
+    return index;
+}
