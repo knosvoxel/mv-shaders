@@ -32,6 +32,12 @@ The sand shader currently only has one variation:
 
 - **sand_brush**: This shader takes voxels with the selected color index's color and makes them "fall down" onto the floor below
 
+### Melt
+
+The melt shader currently only has one variation:
+
+- **melt**: The `melt` shader work very similar to the `sand_brush` shader. The only difference is that the sand_brush only affects the selected color index while the melt shader affects all voxels
+
 ## Feedback & Ideas
 
 If there is any feedback you have or ideas for new shaders head over to the Issues tab and and [create a new issue][new-issue] if one doesn't exist already for the same thing or send me a message on Discord `knosvoxel#4773`
