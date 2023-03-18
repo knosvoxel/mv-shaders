@@ -30,7 +30,7 @@ The snow shader currently comes in 2 different variations:
 
 The sand shader currently only has one variation:
 
-- **sand_brush**: This shader takes voxels with the selected color index's color and makes them "fall down" one voxel with each usage of the shader
+- **sand_brush**: This shader takes voxels with the selected color index's color and makes them "fall down" onto the floor below
 
 ## Feedback & Ideas
 
